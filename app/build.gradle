@@ -1,0 +1,73 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath(
+                'com.android.tools.build:gradle:2.3.3',
+                "com.neenbedankt.gradle.plugins:android-apt:1.8",
+        )
+    }
+}
+
+apply plugin: "com.android.application"
+apply plugin: "com.neenbedankt.android-apt"
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "25.0.0"
+    defaultConfig {
+        applicationId "com.example.abhinav.hackholyokeapp"
+        minSdkVersion 23
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions { lintConfig rootProject.file('gradle/lint.xml') } // needed to suppress Okio's lint errors
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    compile(
+            "com.android.support:appcompat-v7:24.2.1",
+            "com.android.support:recyclerview-v7:24.2.1",
+            "com.android.support:design:24.2.1",
+
+            "com.clarifai.clarifai-api2:core:2.2.+",
+
+
+            // For logging our HTTP outbound + inbound data
+            "com.jakewharton.timber:timber:4.3.0",
+            "com.squareup.okhttp3:logging-interceptor:3.4.1",
+
+            // For runtime permissions on Marshmallow and above
+            "io.reactivex:rxjava:1.1.10",
+            "com.tbruyelle.rxpermissions:rxpermissions:0.7.1@aar",
+    )
+    compile("com.mikepenz:materialdrawer:5.6.0") { transitive = true }
+
+    // For getting views without clunky findViewById
+    compile "com.jakewharton:butterknife:8.4.0"
+    apt "com.jakewharton:butterknife-compiler:8.4.0"
+
+   /* compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'*/
+}

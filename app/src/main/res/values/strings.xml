@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HackHolyokeApp</string>
+    <string name="clarifai_api_key">a9c0c6a364c24efaa338ee308baceb4a</string>
+    <string name="error_external_storage_permission_not_granted">You must accept this permission so we can upload your images!</string>
+    <string name="error_while_contacting_api">Error while contacting Clarifai API</string>
+    <string name="no_results_from_api">API did not return any results</string>
+    <string name="read">Read</string>
+    <string name="ts">Text to Speech</string>
+</resources>
